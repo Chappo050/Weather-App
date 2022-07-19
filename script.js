@@ -31,8 +31,10 @@ function handleDefultData() {
 
 async function accessAPI(location) {
     try {
+        console.time('APIReadTime');
         const weatherData = await fetch('http://api.openweathermap.org/data/2.5/weather?q=' + location + '&APPID=2d8a1cfb755c9c9a78a8409f2ec0237e&units=metric', {mode: "cors"});
         const dataJson = await weatherData.json();
+        console.timeEnd('APIReadTime');
 
         let weatherObj = {};
 
